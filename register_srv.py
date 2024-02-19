@@ -9,7 +9,7 @@ def load_from_file(path: str) -> Register:
     wb = openpyxl.load_workbook(path, read_only=True, data_only=True, keep_links=False)
     sheet = cast(Worksheet, wb.active)
     data = [
-        RegisterRow(str(row[0]), row[2], row[4], row[5])
+        RegisterRow(str(row[0]), row[2], row[4], row[5])  # type: ignore
         for row in sheet.iter_rows(values_only=True, min_col=2, min_row=3)
         if row[0]
     ]
